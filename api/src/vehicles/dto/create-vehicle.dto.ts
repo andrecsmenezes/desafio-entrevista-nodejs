@@ -1,32 +1,31 @@
 import {
-    CarBrand,
-    CarType,
-    IVehicleCreateRequest,
-    MotorcycleBrand,
-    MotorcycleType,
-    VehicleType
-} from "../vehicles.interface";
-import {IsEnum, IsString} from "class-validator";
-import {ApiProperty} from "@nestjs/swagger";
+  CarBrand,
+  CarType,
+  IVehicleCreateRequest,
+  MotorcycleBrand,
+  MotorcycleType,
+  VehicleType,
+} from '../vehicles.interface';
+import { IsEnum, IsString } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateVehicleDto implements IVehicleCreateRequest {
-    @ApiProperty()
+  @ApiProperty()
+  @IsString()
+  board: string;
 
-    @IsString()
-    board: string;
+  @IsEnum([CarBrand, MotorcycleBrand])
+  brand: CarBrand | MotorcycleBrand;
 
-    @IsEnum([CarBrand,MotorcycleBrand])
-    brand: CarBrand | MotorcycleBrand;
+  @IsString()
+  color: string;
 
-    @IsString()
-    color: string;
+  @IsString()
+  model: string;
 
-    @IsString()
-    model: string;
+  @IsEnum([CarType, MotorcycleType])
+  type: CarType | MotorcycleType;
 
-    @IsEnum([CarType,MotorcycleType])
-    type: CarType | MotorcycleType;
-
-    @IsEnum(VehicleType)
-    vehicleType: VehicleType;
+  @IsEnum(VehicleType)
+  vehicleType: VehicleType;
 }

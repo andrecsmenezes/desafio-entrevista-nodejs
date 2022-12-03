@@ -1,8 +1,17 @@
-import {Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe} from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { VehiclesService } from './vehicles.service';
 import { CreateVehicleDto } from './dto/create-vehicle.dto';
 import { UpdateVehicleDto } from './dto/update-vehicle.dto';
-import {Vehicle} from "./entities/vehicle.entity";
+import { Vehicle } from './entities/vehicle.entity';
 
 @Controller('vehicles')
 export class VehiclesController {
@@ -14,7 +23,7 @@ export class VehiclesController {
   }
 
   @Get()
-  async findAll(): Promise<Array<Vehicle>>{
+  async findAll(): Promise<Array<Vehicle>> {
     return await this.vehiclesService.findAll();
   }
 
@@ -24,7 +33,10 @@ export class VehiclesController {
   }
 
   @Patch(':id')
-  update(@Param('id', ParseIntPipe) id: number, @Body() updateVehicleDto: UpdateVehicleDto) {
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateVehicleDto: UpdateVehicleDto,
+  ) {
     return this.vehiclesService.update(+id, updateVehicleDto);
   }
 

@@ -1,42 +1,41 @@
-import {IEstablishmentCreateRequest} from "../establishments.interface";
-import {AddressCreateRequestDto} from "../../common/dto/address.dto";
-import {Type} from "class-transformer";
-import {Address} from "../../common/entities/address.entity";
+import { IEstablishmentCreateRequest } from '../establishments.interface';
+import { AddressCreateRequestDto } from '../../common/dto/address.dto';
+import { Type } from 'class-transformer';
+import { Address } from '../../common/entities/address.entity';
 import {
-    IsNotEmpty,
-    IsNumber,
-    IsNumberString,
-    IsPhoneNumber,
-    IsPositive,
-    IsString,
-    Length,
-    ValidateNested
-} from "class-validator";
-import {ApiProperty} from "@nestjs/swagger";
+  IsNotEmpty,
+  IsNumber,
+  IsNumberString,
+  IsPhoneNumber,
+  IsPositive,
+  IsString,
+  Length,
+  ValidateNested,
+} from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateEstablishmentDto implements IEstablishmentCreateRequest{
-    @ApiProperty()
+export class CreateEstablishmentDto implements IEstablishmentCreateRequest {
+  @ApiProperty()
+  @Type(() => Address)
+  @ValidateNested()
+  address: AddressCreateRequestDto;
 
-    @Type(() => Address)
-    @ValidateNested()
-    address: AddressCreateRequestDto;
+  @IsNumber()
+  @IsPositive()
+  carVacancies: number;
 
-    @IsNumber()
-    @IsPositive()
-    carVacancies: number;
+  @IsNumberString()
+  @Length(14)
+  cnpj: string;
 
-    @IsNumberString()
-    @Length(14)
-    cnpj: string;
+  @IsNumber()
+  @IsPositive()
+  motorcycleVacancies: number;
 
-    @IsNumber()
-    @IsPositive()
-    motorcycleVacancies: number;
+  @IsString()
+  @IsNotEmpty()
+  name: string;
 
-    @IsString()
-    @IsNotEmpty()
-    name: string;
-
-    @IsPhoneNumber()
-    phone: string;
+  @IsPhoneNumber()
+  phone: string;
 }
