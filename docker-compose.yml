@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    environment:
+      MYSQL_DATABASE: drconsulta
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_USER: drconsulta
+      MYSQL_PASSWORD: drconsulta
+      MYSQL_ROOT_HOST: "%"
+    volumes:
+      - ./api/infra/database/mysql-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    networks:
+      - drconsulta
+
+networks:
+  drconsulta:
+    driver: bridge
