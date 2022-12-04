@@ -20,7 +20,7 @@ import { InsertCarEstablishmentDto } from './dto/insert-car-establishment.dto';
 import { VehiclesService } from '../vehicles/vehicles.service';
 import { AppDataSource } from '../database.source';
 import { RemoveCarEstablishmentDto } from './dto/remove-car-establishment.dto';
-import {ApiBearerAuth, ApiQuery} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
 import { EstablishmentMovement } from './entities/establishmentMoviment.entity';
 import { EstablishmentMovementType } from './establishments.interface';
 import { Between } from 'typeorm';

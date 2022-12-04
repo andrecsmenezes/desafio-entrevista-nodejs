@@ -12,7 +12,7 @@ import { IAuth } from './auth.interface';
 import { IsPublic } from './is-public';
 
 import * as bcrypt from 'bcrypt';
-import {ApiBody, ApiParam} from "@nestjs/swagger";
+import { ApiBody, ApiParam } from '@nestjs/swagger';
 
 @Controller('auth')
 export class AuthController {
@@ -25,7 +25,8 @@ export class AuthController {
 
   @ApiBody({
     type: SignInAuthDto,
-    description: 'This is a seed example. If you not execute seed yet, use /seed endpoint to do it. After execute, use processed token to validate all another endpoints.',
+    description:
+      'This is a seed example. If you not execute seed yet, use /seed endpoint to do it. After execute, use processed token to validate all another endpoints.',
     examples: {
       a: {
         summary: 'Default seed',

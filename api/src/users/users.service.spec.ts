@@ -4,12 +4,14 @@ import { usersProviders } from './users.providers';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { UserCreateStub } from './mock/user.create.stub';
+import { DatabaseModule } from '../database.module';
 
 describe('UsersService', () => {
   let service: UsersService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [DatabaseModule],
       providers: [
         ...usersProviders,
         UsersService,

@@ -12,7 +12,7 @@ import { VehiclesService } from './vehicles.service';
 import { CreateVehicleDto } from './dto/create-vehicle.dto';
 import { UpdateVehicleDto } from './dto/update-vehicle.dto';
 import { Vehicle } from './entities/vehicle.entity';
-import {ApiBearerAuth} from "@nestjs/swagger";
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 @Controller('vehicles')
 export class VehiclesController {

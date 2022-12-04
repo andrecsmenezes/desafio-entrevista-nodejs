@@ -4,12 +4,14 @@ import { vehiclesProviders } from './vehicles.providers';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Vehicle } from './entities/vehicle.entity';
 import { VehicleCreateStub } from './mock/vehicles.create.stub';
+import { DatabaseModule } from '../database.module';
 
 describe('VehiclesService', () => {
   let service: VehiclesService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [DatabaseModule],
       providers: [
         ...vehiclesProviders,
         VehiclesService,

@@ -6,14 +6,15 @@ import {
   Patch,
   Param,
   Delete,
-  ParseIntPipe, BadRequestException,
+  ParseIntPipe,
+  BadRequestException,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import {IsPublic} from "../auth/is-public";
-import {User} from "./entities/user.entity";
-import {ApiBearerAuth} from "@nestjs/swagger";
+import { IsPublic } from '../auth/is-public';
+import { User } from './entities/user.entity';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 @Controller('users')
 export class UsersController {
@@ -22,7 +23,9 @@ export class UsersController {
   @IsPublic()
   @Get('seed')
   async seed() {
-    const verifyUserSeed = await this.usersService.findByEmail('joaodasilva@gmail.com');
+    const verifyUserSeed = await this.usersService.findByEmail(
+      'joaodasilva@gmail.com',
+    );
 
     if (verifyUserSeed) {
       throw new BadRequestException('Seed has already been done', {
