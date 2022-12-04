@@ -2,14 +2,7 @@ import {
   EstablishmentMovementType,
   IEstablishmentMovement,
 } from '../establishments.interface';
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToMany,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Establishment } from './establishment.entity';
 import { Vehicle } from '../../vehicles/entities/vehicle.entity';
 

@@ -20,7 +20,7 @@ import { InsertCarEstablishmentDto } from './dto/insert-car-establishment.dto';
 import { VehiclesService } from '../vehicles/vehicles.service';
 import { AppDataSource } from '../database.source';
 import { RemoveCarEstablishmentDto } from './dto/remove-car-establishment.dto';
-import { ApiQuery } from '@nestjs/swagger';
+import {ApiBearerAuth, ApiQuery} from '@nestjs/swagger';
 import { EstablishmentMovement } from './entities/establishmentMoviment.entity';
 import { EstablishmentMovementType } from './establishments.interface';
 import { Between } from 'typeorm';
@@ -32,14 +32,13 @@ export class EstablishmentsController {
     private readonly vehicleService: VehiclesService,
   ) {}
 
+  @ApiBearerAuth()
   @Post()
   async create(@Body() createEstablishmentDto: CreateEstablishmentDto) {
-    const establishment = await this.establishmentsService.create(
-      createEstablishmentDto,
-    );
-    return 'inserted';
+    return await this.establishmentsService.create(createEstablishmentDto);
   }
 
+  @ApiBearerAuth()
   @ApiQuery({ name: 'page', required: false })
   @ApiQuery({ name: 'limit', required: false })
   @Get()
@@ -57,11 +56,13 @@ export class EstablishmentsController {
     return await this.establishmentsService.findAll(options);
   }
 
+  @ApiBearerAuth()
   @Get(':id')
   async findOne(@Param('id', ParseIntPipe) id: number) {
     return await this.establishmentsService.findOne(+id);
   }
 
+  @ApiBearerAuth()
   @Patch(':id')
   async update(
     @Param('id', ParseIntPipe) id: number,
@@ -70,11 +71,13 @@ export class EstablishmentsController {
     return await this.establishmentsService.update(+id, updateEstablishmentDto);
   }
 
+  @ApiBearerAuth()
   @Delete(':id')
   async remove(@Param('id', ParseIntPipe) id: number) {
     return await this.establishmentsService.remove(+id);
   }
 
+  @ApiBearerAuth()
   @Post(':id/insert-vehicle')
   @HttpCode(HttpStatus.CREATED)
   async insertVehicle(
@@ -137,6 +140,7 @@ export class EstablishmentsController {
     );
   }
 
+  @ApiBearerAuth()
   @Post(':id/remove-vehicle')
   async removeVehicle(
     @Param('id', ParseIntPipe) id: number,
@@ -183,6 +187,7 @@ export class EstablishmentsController {
     });
   }
 
+  @ApiBearerAuth()
   @ApiQuery({ name: 'page', required: false })
   @ApiQuery({ name: 'limit', required: false })
   @ApiQuery({ name: 'start', required: false, example: '2022-12-03 14:55' })
@@ -221,6 +226,7 @@ export class EstablishmentsController {
     return await this.establishmentsService.getMovement(options, where);
   }
 
+  @ApiBearerAuth()
   @ApiQuery({ name: 'page', required: false })
   @ApiQuery({ name: 'limit', required: false })
   @Get(':id/movement-per-hour')

@@ -9,7 +9,6 @@ import { UpdateEstablishmentDto } from './dto/update-establishment.dto';
 import {
   DeleteResult,
   EntityNotFoundError,
-  FindOptionsWhere,
   Repository,
   UpdateResult,
 } from 'typeorm';
@@ -23,7 +22,6 @@ import {
   Pagination,
 } from 'nestjs-typeorm-paginate';
 import { EstablishmentMovement } from './entities/establishmentMoviment.entity';
-import { EstablishmentMovementType } from './establishments.interface';
 
 @Injectable()
 export class EstablishmentsService {

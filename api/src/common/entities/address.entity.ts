@@ -1,7 +1,6 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { IAddress } from '../../common/interfaces/address.interface';
 import { ApiProperty } from '@nestjs/swagger';
-import { Establishment } from '../../establishments/entities/establishment.entity';
 
 @Entity('addresses')
 export class Address implements IAddress {
