@@ -11,7 +11,6 @@ import { IUser } from '../users.interface';
 import { ApiProperty } from '@nestjs/swagger';
 
 import * as bcrypt from 'bcrypt';
-import { InternalServerErrorException } from '@nestjs/common';
 import { isUndefined } from 'lodash';
 
 @Entity('users')

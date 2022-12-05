@@ -6,10 +6,10 @@ import { usersProviders } from './users.providers';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { DatabaseModule } from '../database.module';
-import {CreateUserDto} from "./dto/create-user.dto";
-import {IUserCreateRequest} from "./users.interface";
-import {plainToInstance} from "class-transformer";
-import {validate} from "class-validator";
+import { CreateUserDto } from './dto/create-user.dto';
+import { IUserCreateRequest } from './users.interface';
+import { plainToInstance } from 'class-transformer';
+import { validate } from 'class-validator';
 
 describe('UsersController', () => {
   let controller: UsersController;

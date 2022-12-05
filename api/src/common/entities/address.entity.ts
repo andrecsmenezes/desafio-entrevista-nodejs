@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { IAddress } from '../../common/interfaces/address.interface';
+import { IAddress } from '../interfaces/address.interface';
 import { ApiProperty } from '@nestjs/swagger';
 
 @Entity('addresses')

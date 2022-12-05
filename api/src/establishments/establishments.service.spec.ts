@@ -5,7 +5,7 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { Establishment } from './entities/establishment.entity';
 import { EstablishmentCreateStub } from './mock/establishment.create.stub';
 import { DatabaseModule } from '../database.module';
-import {addressesProviders} from "../common/providers/addresses.providers";
+import { addressesProviders } from '../common/providers/addresses.providers';
 
 describe('EstablishmentsService', () => {
   let service: EstablishmentsService;

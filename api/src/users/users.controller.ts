@@ -13,7 +13,6 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { IsPublic } from '../auth/is-public';
-import { User } from './entities/user.entity';
 import { ApiBearerAuth } from '@nestjs/swagger';
 
 @Controller('users')

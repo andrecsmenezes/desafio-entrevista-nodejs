@@ -1,14 +1,13 @@
-import { Inject, Injectable, Logger } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { Establishment } from '../establishments/entities/establishment.entity';
 import { Vehicle } from '../vehicles/entities/vehicle.entity';
 import { VehicleType } from '../vehicles/vehicles.interface';
 import { Repository } from 'typeorm';
 import { Address } from '../common/entities/address.entity';
+import { IResumeResponse } from './reports.interface';
 
 @Injectable()
 export class ReportsService {
-  private logger = new Logger(Establishment.name);
-
   constructor(
     @Inject('ESTABLISHMENT_REPOSITORY')
     private readonly establishmentRepository: Repository<Establishment>,
@@ -20,7 +19,7 @@ export class ReportsService {
     private readonly vehicleRepository: Repository<Vehicle>,
   ) {}
 
-  async getResume(): Promise<Object> {
+  async getResume(): Promise<IResumeResponse> {
     const establishments = this.establishmentRepository.count({});
     const vehicles = this.vehicleRepository.count({});
     const cars = this.vehicleRepository.count({

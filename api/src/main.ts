@@ -31,4 +31,6 @@ async function bootstrap() {
 
   await app.listen(3000);
 }
-bootstrap();
+bootstrap()
+  .then(() => console.log('System fully initiated'))
+  .catch((error) => console.error(error));

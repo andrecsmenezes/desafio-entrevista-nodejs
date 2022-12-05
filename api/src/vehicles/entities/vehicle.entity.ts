@@ -1,11 +1,9 @@
 import {
-  BeforeUpdate,
   Column,
   Entity,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
-  UpdateEvent,
 } from 'typeorm';
 import {
   CarBrand,

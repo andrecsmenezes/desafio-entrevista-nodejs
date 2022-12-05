@@ -1,6 +1,6 @@
 import { IsEmail, IsString, Length } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import {IUserCreateRequest} from "../users.interface";
+import { IUserCreateRequest } from '../users.interface';
 
 export class CreateUserDto implements IUserCreateRequest {
   @ApiProperty()

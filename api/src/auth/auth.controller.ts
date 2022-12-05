@@ -12,7 +12,7 @@ import { IAuth } from './auth.interface';
 import { IsPublic } from './is-public';
 
 import * as bcrypt from 'bcrypt';
-import { ApiBody, ApiParam } from '@nestjs/swagger';
+import { ApiBody } from '@nestjs/swagger';
 
 @Controller('auth')
 export class AuthController {
