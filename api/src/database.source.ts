@@ -8,7 +8,7 @@ import { DataSource } from 'typeorm';
 
 export const AppDataSource = new DataSource({
   type: 'mysql',
-  host: 'localhost', // process.env.TYPEORM_HOST,
+  host: 'drconsulta_db', // process.env.TYPEORM_HOST,
   port: 3306, // parseInt(process.env.TYPEORM_PORT || '3306'),
   username: 'drconsulta', // process.env.TYPEORM_USERNAME,
   password: 'drconsulta', // process.env.TYPEORM_PASSWORD,

@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   db:
+    container_name: drconsulta_db
     image: mysql
     command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     restart: always
@@ -20,21 +21,23 @@ services:
     networks:
       - drconsulta
 
-#  api:
-#    build:
-#      context: .
-#      dockerfile: ./api/infra/dockerfiles/Dockerfile.nestjs
-#    restart: unless-stopped
-#    env_file:
-#      - ./api/.env
-#    volumes:
-#      - ./api:/usr/src/app
-#    ports:
-#      - "3000:3000"
-#    depends_on:
-#      - db
-#    networks:
-#      - drconsulta
+  api:
+    container_name: drconsulta_api
+    build:
+      context: ./api
+    restart: unless-stopped
+    env_file:
+      - ./api/.env
+    volumes:
+      - ./api:/usr/src/app
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    depends_on:
+      - db
+    networks:
+      - drconsulta
 
 networks:
   drconsulta:
